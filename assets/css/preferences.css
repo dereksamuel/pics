@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #152646;
+  color: aliceblue;
+}
+
+.Header {
+  width: 100%;
+  text-align: center;
+  background-color: #286475fc;
+  color: #e2f0e9;
+  padding: 10px;
+}
+
+.Form {
+  margin: 10px;
+}
+
+.ContainerInput p {
+  margin: 10px 0;
+}
+
+.Input {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #e5f0ea;
+  outline: none;
+  border: none;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+button, .Submit {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  border-bottom: 2.5px solid rgb(88, 126, 143);
+  background-color: rgb(167, 225, 233);
+  box-shadow: inset 0px 0px 9px #286475fc;
+  color: #406973;
+  font-weight: 600;
+  transition: 0.1s transform;
+  outline: none;
+  margin-bottom: 2.5px;
+}
+
+button:hover, .Submit:hover {
+  cursor: pointer;
+}
+
+button:active, .Submit:active {
+  border-bottom: none;
+  transform: translateY(2.5px);
+  margin-bottom: 5px;
+}
+
+.Cancel {
+  border-bottom: 2.5px solid rgb(90, 99, 104);
+  background-color: rgb(188, 203, 204);
+  box-shadow: inset 0px 0px 9px #6c7b80fc;
+  color: #677072;
+}
+
+.Footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #406973;
+}

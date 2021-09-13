@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable prefer-const */
 /* eslint-disable max-statements */
 /* eslint-disable one-var */
@@ -7,12 +8,15 @@
 /* eslint-disable no-invalid-this */
 /* eslint-disable no-plusplus */
 /* eslint-disable func-names */
-import { changeImage, searchImagesEvent, selectEvent } from "./images-ui";
-import { setIpc, openDirectory as sendOpendirectory, saveFile, openPreferences } from "./ipcRendererEvents";
+import { changeImage, searchImagesEvent, selectEvent, print } from "./main-window/images-ui";
+import { setIpc, openDirectory as sendOpendirectory, saveFile, openPreferences } from "./main-window/ipcRendererEvents";
 
 let imagesData = [];
 
 window.onload = () => {
+  const $loading = document.getElementById("loading");
+
+  $loading.style.display = "none";
   setIpc(imagesData);
   addImages();
   searchImagesEvent();
@@ -27,6 +31,9 @@ window.onload = () => {
   });
   handleButtonAction("open__preferences", () => {
     openPreferences();
+  });
+  handleButtonAction("open__print", () => {
+    print();
   });
 };
 

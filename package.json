@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "cross-env": "^7.0.3",
+    "cryptr": "^6.0.2",
     "electron-compile": "^6.4.4",
     "electron-debug": "^3.2.0",
     "filesize": "^8.0.0",

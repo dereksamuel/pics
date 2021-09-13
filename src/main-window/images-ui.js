@@ -69,6 +69,10 @@ function searchImagesEvent () {
   });
 }
 
+function print () {
+  window.print();
+}
+
 function selectEvent () {
   const $select = document.getElementById("filter");
 
@@ -116,4 +120,5 @@ export {
   loadImages,
   clearImages,
   searchImagesEvent,
+  print,
 };

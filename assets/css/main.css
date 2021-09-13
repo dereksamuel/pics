@@ -13,14 +13,20 @@ body {
   background: #a2cab6;
 }
 
-.Header {
+.Header, footer {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
   background-color: #152646;
   box-shadow: inset 0px 0px 20px #c4e2c75c;
+  color: rgb(195, 240, 206);
   /* border: 0.2px solid rgb(111, 83, 130); */
+}
+
+footer {
+  background-color: #1f252e;
+  box-shadow: none;
 }
 
 h1 {
@@ -34,7 +40,7 @@ h1 {
 .Main {
   display: flex;
   justify-content: space-between;
-  height: calc(100% - 54.5px);
+  height: calc(100% - 95.5px);
 }
 
 hr {
@@ -98,6 +104,14 @@ hr {
   color: #152646;
 }
 
+.Image__item p strong {
+  text-overflow: ellipsis;
+  width: 280px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+
 .Image__item div {
   padding: 10px;
   display: flex;
@@ -110,7 +124,11 @@ hr {
   width: 50px;
   min-height: 50px;
   max-height: 50px;
+  max-width: 50px;
   object-fit: cover;
+  text-overflow: clip;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .right {
@@ -189,5 +207,80 @@ label {
   }
   100% {
     opacity: 1;
+  }
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: rgb(241, 236, 236);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+.Loading {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+  background-color: #1f252e;
+}
+
+@media print {
+  header, footer, .Main__slice1, .btn-group, .right, .Header {
+    display: none;
   }
 }

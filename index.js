@@ -1,15 +1,19 @@
+/* eslint-disable max-statements */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-magic-numbers */
 /* eslint-disable consistent-return */
 "use strict";
 
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, Tray } from "electron";
 import path from "path";
 
 import devtools from "./devtools";
-import setupErrors from "./src/handle-errors";
-import { ipcMainSetup } from "./src/ipcMainEvents";
+import setupErrors from "./handle-errors";
+import { ipcMainSetup } from "./ipcMainEvents";
+import os from "os";
 
-let window;
+global.window;
 
 if (process.env.NODE_ENV === "development") {
   devtools();
@@ -20,10 +24,12 @@ app.on("before-quit", () => {
 });
 
 app.on("ready", async () => {
-  window = new BrowserWindow({
+  global.window = new BrowserWindow({
     width: 1000,
     height: 600,
-    minWidth: 1000,
+    minWidth: 1300,
+    minHeight: 800,
+    icon: path.join(__dirname, "assets", "icons", "pics_logo.ico"),
     title: "Pics - Your favorite app to edit 'pics' images",
     center: true,
     // maximizable: false,
@@ -34,30 +40,38 @@ app.on("ready", async () => {
     }
   });
 
-  window.maximize();
+  global.window.maximize();
 
-  setupErrors(window);
-  ipcMainSetup(window);
+  setupErrors(global.window);
+  ipcMainSetup(global.window);
 
-  window.once("ready-to-show", () => { // once es solo una vez
-    window.show();
+  global.window.once("ready-to-show", () => { // once es solo una vez
+    global.window.show();
   });
 
-  window.on("move", () => {
-    const position = window.getPosition();
+  global.window.on("move", () => {
+    const position = global.window.getPosition();
     console.log(position);
   });
 
-  window.on("closed", handleFinish);
+  global.window.on("closed", handleFinish);
 
-  // await window.loadURL("https://transformart-5e776.web.app/").catch((error) => {
+  let icon;
+  if (os.platform() === "win32") {
+    icon = path.join(__dirname, "assets", "icons", "pics_logo.ico");
+  } else {
+    icon = path.join(__dirname, "assets", "icons", "pics_logo.png");
+  }
+
+  global.tray = new Tray(icon);
+  // await global.window.loadURL("https://transformart-5e776.web.app/").catch((error) => {
   //   console.error("[error-load-url]:", error);
   // });
-  await window.loadURL(`file://${__dirname}/src/index.html`);
-  window.toggleDevTools();
+  await global.window.loadURL(`file://${__dirname}/src/index.html`);
+  global.window.toggleDevTools();
 });
 
 function handleFinish () {
-  window = null;
+  global.window = null;
   app.quit();
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/css/preferences.css">
+  <title>Pics</title>
+</head>
+<body>
+  <div id="app">
+    <header class="Header">
+      <h3>Preferencias</h3>
+    </header>
+    <form class="Form" id="form">
+      <h4>CloudUp Inicio de sesión</h4>
+      <label for="email" class="ContainerInput">
+        <p>Usuario:</p>
+        <input type="email" placeholder="Email" class="Input" name="email" required id="email" />
+      </label>
+      <label for="password" class="ContainerInput">
+        <p>Password: </p>
+        <input type="password" placeholder="Password" class="Input" name="password" required id="password" />
+      </label>
+    </form>
+    <footer class="Footer">
+      <button class="Cancel" id="cancel">Cancelar</button>
+      <input class="Submit" form="form" value="Guardar" type="submit" />
+    </footer>
+  </div>
+  <script src="./preferences.js"></script>
+</body>
+</html>
